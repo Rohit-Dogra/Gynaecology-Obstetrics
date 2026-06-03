@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Sapna Clinic – Obstetrics & Gynaecology | Gurugram</title>
+<title>Dr. Sapna Clinic – Obstetrics & Gynaecology | New Delhi</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -104,8 +104,8 @@ nav{background:white;border-bottom:1px solid var(--border);position:sticky;top:0
 /* ── ABOUT OVERVIEW ── */
 .overview{background:var(--white);}
 .overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-.overview-img{border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.1);}
-.overview-img img{width:100%;display:block;}
+.overview-img{border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.1);aspect-ratio:4/3;background:var(--bg);}
+.overview-img img{width:100%;height:100%;display:block;object-fit:cover;min-height:280px;}
 .feature-list{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
 .feature-item{display:flex;align-items:flex-start;gap:13px;padding:16px 18px;background:var(--bg);border-radius:10px;border-left:3px solid var(--primary);transition:.3s;}
 .feature-item:hover{background:var(--primary-light);border-left-color:var(--primary-dark);}
@@ -183,18 +183,28 @@ nav{background:white;border-bottom:1px solid var(--border);position:sticky;top:0
 
 /* ── PATIENT STORIES ── */
 .stories-section{background:white;}
-.stories-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
-.story-card{background:var(--bg);border-radius:14px;padding:26px 24px;border:1px solid var(--border);transition:.3s;position:relative;overflow:hidden;}
-.story-card::before{content:'\201C';position:absolute;top:8px;right:16px;font-size:6rem;color:var(--primary-light);font-family:'Merriweather',serif;line-height:1;pointer-events:none;}
+.stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;}
+.story-card{background:var(--bg);border-radius:14px;padding:24px 22px;border:1px solid var(--border);transition:.3s;position:relative;overflow:hidden;display:flex;flex-direction:column;height:100%;min-height:0;}
+.story-card::before{content:'\201C';position:absolute;top:8px;right:16px;font-size:5rem;color:var(--primary-light);font-family:'Merriweather',serif;line-height:1;pointer-events:none;}
 .story-card:hover{border-color:var(--primary-mid);box-shadow:0 10px 32px rgba(181,41,78,0.1);transform:translateY(-4px);}
-.story-stars{color:#f59e0b;font-size:0.9rem;letter-spacing:2px;margin-bottom:12px;}
-.story-text{font-size:0.9rem;color:var(--text);line-height:1.78;margin-bottom:18px;font-style:italic;}
-.story-author{font-weight:800;font-size:0.88rem;color:var(--primary-dark);}
+.story-card-head{flex-shrink:0;}
+.story-body{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;}
+.story-stars{color:#f59e0b;font-size:0.88rem;letter-spacing:2px;margin-bottom:10px;}
+.story-text{font-size:clamp(0.82rem,1.05vw,0.9rem);color:var(--text);line-height:1.72;font-style:italic;margin:0;}
+.story-text.collapsed{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden;}
+.story-text.expanded{display:block;-webkit-line-clamp:unset;overflow:visible;}
+.story-read-more{align-self:flex-start;background:none;border:none;color:var(--primary);font-weight:700;font-size:0.8rem;cursor:pointer;padding:10px 0 0;font-family:'Inter',sans-serif;transition:.2s;}
+.story-read-more:hover{text-decoration:underline;color:var(--primary-dark);}
+.story-read-more[hidden]{display:none;}
+.story-footer{margin-top:auto;flex-shrink:0;padding-top:14px;border-top:1px solid var(--border);}
+.story-author{font-weight:800;font-size:0.86rem;color:var(--primary-dark);}
 .story-location{font-size:0.76rem;color:var(--text-light);margin-top:2px;}
+.story-img{width:100%;border-radius:10px;margin-bottom:14px;display:block;object-fit:cover;aspect-ratio:16/10;max-height:200px;flex-shrink:0;}
+.story-greeting{font-weight:700;font-size:clamp(0.82rem,1vw,0.88rem);color:var(--primary);margin-bottom:8px;}
 
 /* ── CONTACT ── */
 .contact-section{background:var(--bg);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-grid{max-width:100%;}
 .contact-cards{display:flex;flex-direction:column;gap:14px;margin-top:28px;}
 .ccard{display:flex;align-items:flex-start;gap:14px;background:white;border-radius:12px;padding:18px 20px;border:1px solid var(--border);transition:.3s;}
 .ccard:hover{border-color:var(--primary-mid);box-shadow:0 5px 18px rgba(181,41,78,0.08);}
@@ -203,23 +213,16 @@ nav{background:white;border-bottom:1px solid var(--border);position:sticky;top:0
 .ccard-val{font-size:0.9rem;color:var(--text);line-height:1.5;font-weight:500;}
 .ccard-val a{color:var(--primary);font-weight:700;text-decoration:none;}
 .ccard-val a:hover{text-decoration:underline;}
-.map-placeholder{background:linear-gradient(135deg,var(--primary-light),var(--teal-light));border-radius:14px;height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed var(--primary-mid);margin-top:20px;gap:10px;}
-.map-placeholder p{font-size:0.85rem;color:var(--primary);font-weight:600;}
-
-/* Request callback box */
-.callback-box{background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:16px;padding:36px 32px;color:white;box-shadow:0 14px 40px rgba(181,41,78,0.3);}
-.callback-box h3{font-family:'Merriweather',serif;font-size:1.35rem;margin-bottom:6px;}
-.callback-box p{font-size:0.88rem;opacity:.8;margin-bottom:24px;}
-.cb-field{margin-bottom:14px;}
-.cb-field input,.cb-field select{width:100%;padding:12px 15px;border:1.5px solid rgba(255,255,255,0.25);border-radius:8px;background:rgba(255,255,255,0.12);color:white;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:.3s;}
-.cb-field input::placeholder{color:rgba(255,255,255,0.55);}
-.cb-field input:focus,.cb-field select:focus{border-color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.18);}
-.cb-field select{color:white;}
-.cb-field select option{color:var(--text);background:white;}
-.cb-btn{width:100%;padding:13px;border:2px solid white;border-radius:8px;background:white;color:var(--primary);font-weight:800;font-size:0.92rem;cursor:pointer;transition:.3s;font-family:'Inter',sans-serif;}
-.cb-btn:hover{background:transparent;color:white;}
-.phone-cta{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;padding:14px;background:rgba(255,255,255,0.1);border-radius:10px;border:1px solid rgba(255,255,255,0.2);}
-.phone-cta a{color:white;text-decoration:none;font-weight:900;font-size:1.15rem;}
+.map-embed{margin-top:24px;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.1);border:1px solid var(--border);background:var(--white);}
+.map-embed iframe{display:block;width:100%;height:420px;border:0;}
+.map-embed-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:0.85rem;font-weight:700;color:var(--primary);text-decoration:none;}
+.map-embed-link:hover{text-decoration:underline;}
+@media(max-width:600px){.map-embed iframe{height:300px;}}
+.review-cta{margin-top:20px;padding:22px 24px;background:linear-gradient(135deg,#fff9eb,#fef5f8);border:1px solid rgba(200,149,42,0.45);border-radius:14px;}
+.review-cta h4{font-size:1.02rem;font-weight:800;color:var(--text);margin-bottom:6px;}
+.review-cta p{font-size:0.86rem;color:var(--text-mid);margin-bottom:14px;line-height:1.65;}
+.review-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#e8a820);color:white;padding:12px 24px;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.88rem;transition:.3s;box-shadow:0 4px 14px rgba(200,149,42,0.35);}
+.review-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,149,42,0.45);}
 
 /* ── FOOTER ── */
 footer{background:#0f0f1a;color:white;padding:60px 5% 28px;}
@@ -248,18 +251,32 @@ footer{background:#0f0f1a;color:white;padding:60px 5% 28px;}
 .reveal-r.vis{opacity:1;transform:none;}
 
 /* Mobile */
+@media(max-width:1100px){
+  .stories-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+}
 @media(max-width:900px){
-  .hero-wrap,.overview-grid,.doc-msg-grid,.tab-panel.active,.contact-grid{grid-template-columns:1fr;}
+  .hero-wrap,.overview-grid,.doc-msg-grid,.tab-panel.active{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   nav .nav-links{display:none;}
   .exp-grid{grid-template-columns:1fr;}
   .hero-stats{flex-wrap:wrap;}
   .hstat{min-width:45%;}
+  .overview-img img{min-height:220px;}
+  .overview-grid .reveal-l{order:1;}
+  .overview-grid .reveal-r{order:2;}
 }
 @media(max-width:600px){
   .footer-grid{grid-template-columns:1fr;}
   .birth-stages{gap:12px;}
   .bstage{min-width:120px;}
+  .stories-grid{grid-template-columns:1fr;gap:16px;}
+  .story-card{padding:20px 16px;}
+  .story-text.collapsed{-webkit-line-clamp:5;}
+  .story-card::before{font-size:4rem;top:4px;right:10px;}
+  .story-img{max-height:180px;}
+}
+@media(min-width:901px) and (max-width:1280px){
+  .stories-grid{gap:20px;}
 }
 </style>
 </head>
@@ -269,8 +286,8 @@ footer{background:#0f0f1a;color:white;padding:60px 5% 28px;}
 <div class="topbar">
   <div class="topbar-left">
     <a href="tel:7303498625">📞 7303498625</a>
-    <a href="#">📍187/H/6/1, JEEWAN NAGAR , NEW DELHI -14 </a>
-    <a href="#">⏰ Mon–Sat: 9AM–7PM</a>
+    <a href="#">📍 H-187/6, Maharani Bagh Ring Road, Jiwan Nagar, Sunlight Colony, New Delhi 110014</a>
+    <a href="#contact">⏰ Sun–Sat: 9–11 AM &amp; 6–9 PM</a>
   </div>
   <div class="topbar-right">
     <a href="tel:7303498625" class="topbar-emg">🚨 Emergency</a>
@@ -355,7 +372,9 @@ footer{background:#0f0f1a;color:white;padding:60px 5% 28px;}
 <section class="page-section overview" id="overview">
   <div class="inner overview-grid">
     <div class="reveal-l">
-   
+      <div class="overview-img">
+        <img src="office.jpeg" alt="Dr. Sapna Clinic — consultation room">
+      </div>
     </div>
     <div class="reveal-r">
       <div class="tag-pill">🏥 About the Clinic</div>
@@ -559,9 +578,57 @@ footer{background:#0f0f1a;color:white;padding:60px 5% 28px;}
       <p class="section-sub">Hear from the women and families whose lives we've been honoured to be part of.</p>
     </div>
     <div class="stories-grid">
-      <div class="story-card reveal"><div class="story-stars">★★★★★</div><p class="story-text">Dr. Sapna guided me through my high-risk pregnancy with incredible care and precision. Today my baby is perfectly healthy — I owe everything to her expertise and calm reassurance.</p><div class="story-author">Priya Sharma</div><div class="story-location">Palam Vihar, Gurugram</div></div>
-      <div class="story-card reveal"><div class="story-stars">★★★★★</div><p class="story-text">After 3 difficult years of trying, Dr. Sapna's IVF programme gave us our son. Her patience and expertise turned our despair into the greatest joy of our lives.</p><div class="story-author">Anita &amp; Rajesh Verma</div><div class="story-location">Sector 23, Gurugram</div></div>
-      <div class="story-card reveal"><div class="story-stars">★★★★★</div><p class="story-text">I had struggled with severe PCOD for years. Dr. Sapna's systematic, compassionate treatment approach completely transformed my health. I feel like a new person.</p><div class="story-author">Sunita Devi</div><div class="story-location">Palam Vihar Extension</div></div>
+      <div class="story-card reveal">
+        <div class="story-card-head">
+          <div class="story-stars">★★★★★</div>
+          <div class="story-greeting">Radhe Radhe Dr 🙏</div>
+        </div>
+        <div class="story-body">
+          <p class="story-text collapsed">My entire pregnancy and delivery journey with you was truly wonderful. Aapka support, guidance aur care har step par mere saath tha. The best part was how patiently you cleared all my doubts and were always available whenever I needed you.<br><br>During delivery, your words gave me so much strength and confidence. I felt safe because you were there. Aapki wajah se hi main aur mera baby dono bilkul healthy hain.<br><br>Having a doctor like you is truly a blessing. I will definitely recommend you to all expecting mothers because the kind of care you give is rare. Thank you so much for everything 😊</p>
+          <button type="button" class="story-read-more" aria-expanded="false">Read more</button>
+        </div>
+        <div class="story-footer"><div class="story-author">Always grateful, Krityka Sharma</div></div>
+      </div>
+      <div class="story-card reveal">
+        <img class="story-img" src="single.jpeg" alt="Krityka Sharma with Dr. Sapna and family">
+        <div class="story-card-head">
+          <div class="story-stars">★★★★★</div>
+          <div class="story-greeting">Radhe Radhe Dr 🙏</div>
+        </div>
+        <div class="story-body">
+          <p class="story-text collapsed">My entire pregnancy and delivery journey with you was truly wonderful. Aapka support, guidance aur care har step par mere saath tha. The best part was how patiently you cleared all my doubts and were always available whenever I needed you.<br><br>During delivery, your words gave me so much strength and confidence. I felt safe because you were there. Aapki wajah se hi main aur mera baby dono bilkul healthy hain.<br><br>Having a doctor like you is truly a blessing. I will definitely recommend you to all expecting mothers because the kind of care you give is rare. Thank you so much for everything 😊</p>
+          <button type="button" class="story-read-more" aria-expanded="false">Read more</button>
+        </div>
+        <div class="story-footer"><div class="story-author">Always grateful, Krityka Sharma</div></div>
+      </div>
+      <div class="story-card reveal">
+        <div class="story-card-head"><div class="story-stars">★★★★★</div></div>
+        <div class="story-body">
+          <p class="story-text collapsed">Thank you! Dr Sapna for your exceptional care, support, and expertise throughout my pregnancy and delivery. I am deeply grateful for helping me bring my baby safely into this world through a normal delivery. Your kindness and dedication made all the difference, and I will always cherish and appreciate what you did for us 🥰</p>
+          <button type="button" class="story-read-more" aria-expanded="false">Read more</button>
+        </div>
+        <div class="story-footer"><div class="story-author">Pt Madiha</div></div>
+      </div>
+      <div class="story-card reveal">
+        <div class="story-card-head"><div class="story-stars">★★★★★</div></div>
+        <div class="story-body">
+          <p class="story-text collapsed">Hii mam — Mam it was a wonderful experience on 18 August 2025. That was a great day not just because I delivered but the smooth experience of delivery. I was not scared because I knew that the magical hands of my doctor was with me. That's so true — after 3 losses you have motivated me to stay strong. Also after delivery everything was very best like care and all. Thank you for the care mam by heart 🙏🏻. I wish my next delivery could be done by you only. I know you are there for me always.<br><br>Dr. Sapna has proved that Doctor bhi dost ban jate hain. Me and my daughter Vrinda will always be thankful to you 🙏🏻🙏🏻</p>
+          <button type="button" class="story-read-more" aria-expanded="false">Read more</button>
+        </div>
+        <div class="story-footer"><div class="story-author">Monika</div></div>
+      </div>
+      <div class="story-card reveal">
+        <img class="story-img" src="all.jpeg" alt="Abdulkarim Ahmed and family with Dr. Sapna and team">
+        <div class="story-card-head"><div class="story-stars">★★★★★</div></div>
+        <div class="story-body">
+          <p class="story-text collapsed">Hello Dr. Sapna — I am Abdulkarim Ahmed from Chad. I would like to express my sincere gratitude and appreciation for all the care, support, and services you provided. My experience with you was excellent, and thanks to God, my health outcome was very good.<br><br>You are a kind, caring, and highly skilled doctor who is dedicated to your work. I truly appreciate your professionalism, patience, and the attention you gave throughout the process.<br><br>I wish you continued success, progress, and prosperity in your career. I highly recommend Dr. Sapna to anyone seeking quality medical care and professional support, as she provides outstanding service and genuinely cares about her patients. Thank you very much for everything you have done.</p>
+          <button type="button" class="story-read-more" aria-expanded="false">Read more</button>
+        </div>
+        <div class="story-footer">
+          <div class="story-author">Abdulkarim Ahmed</div>
+          <div class="story-location">Chad, Africa</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -573,42 +640,28 @@ footer{background:#0f0f1a;color:white;padding:60px 5% 28px;}
       <div class="tag-pill">📍 Find Us</div>
       <h2 class="section-title">Contact &amp; <em>Location</em></h2>
       <div class="divider"></div>
-      <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.75;margin-bottom:4px;">Visit Dr. Sapna Clinic in Palam Vihar, Gurugram or call for a same-day consultation. Emergency delivery cases attended 24/7.</p>
+      <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.75;margin-bottom:4px;">Visit Dr. Sapna Clinic in Sunlight Colony, New Delhi or call for a same-day consultation. Emergency delivery cases attended 24/7.</p>
       <div class="contact-cards">
         <div class="ccard"><div class="ccard-icon">📞</div><div><div class="ccard-label">Phone / WhatsApp</div><div class="ccard-val"><a href="tel:7303498625">7303498625</a></div></div></div>
-        <div class="ccard"><div class="ccard-icon">📍</div><div><div class="ccard-label">Clinic Address</div><div class="ccard-val">187/H/6/1,<br> JEEWAN NAGAR , NEW DELHI -14</div></div></div>
-        <div class="ccard"><div class="ccard-icon">⏰</div><div><div class="ccard-label">Clinic Hours</div><div class="ccard-val">Mon–Sat: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 2:00 PM</div></div></div>
+        <div class="ccard"><div class="ccard-icon">📍</div><div><div class="ccard-label">Clinic Address</div><div class="ccard-val">H-187/6, Maharani Bagh Ring Road,<br>Jiwan Nagar, J.J. Colony, Phase 1,<br>Sunlight Colony, New Delhi, Delhi 110014</div></div></div>
+        <div class="ccard"><div class="ccard-icon">⏰</div><div><div class="ccard-label">Clinic Hours</div><div class="ccard-val"><strong>Open every day (Sun–Sat)</strong><br>Morning: 9:00 AM – 11:00 AM<br>Evening: 6:00 PM – 9:00 PM</div></div></div>
         <div class="ccard"><div class="ccard-icon">🚨</div><div><div class="ccard-label">Emergency</div><div class="ccard-val">24/7 for delivery cases — <a href="tel:7303498625">Call anytime</a></div></div></div>
       </div>
-      <div class="map-placeholder">
-        <span style="font-size:2.5rem;">🗺️</span>
-        <p> 187/H/6/1, JEEWAN NAGAR , NEW DELHI -14  </p>
+      <div class="review-cta">
+        <h4>⭐ Aapka review humare liye bahut important hai</h4>
+        <p>Visited Dr. Sapna Clinic? Please share your experience on Google — your review helps other families find trusted care.</p>
+        <a class="review-btn" href="https://share.google/WwCjajjjhBphLoSDK" target="_blank" rel="noopener noreferrer">Leave a Google Review</a>
       </div>
-    </div>
-    <div class="reveal-r">
-      <div class="callback-box">
-        <h3>Request a Call Back</h3>
-        <p>Leave your details and we'll call you back at your preferred time.</p>
-        <div class="cb-field"><input type="text" placeholder="Your Full Name *"></div>
-        <div class="cb-field"><input type="tel" placeholder="Mobile Number *"></div>
-        <div class="cb-field">
-          <select>
-            <option value="" style="color:#999">Select Service...</option>
-            <option>Pregnancy / Antenatal Check-up</option>
-            <option>Infertility / IVF Consultation</option>
-            <option>PCOD / PCOS Treatment</option>
-            <option>Laparoscopic Surgery</option>
-            <option>Menstrual Problems</option>
-            <option>Normal / C-Section Delivery</option>
-            <option>General Gynaecology</option>
-          </select>
-        </div>
-        <button class="cb-btn" onclick="this.textContent='✅ Request Sent!';setTimeout(()=>this.textContent='Request Call Back',3000)">Request Call Back</button>
-        <div class="phone-cta">
-          <span style="font-size:0.85rem;opacity:.75;">Or call directly:</span>
-          <a href="tel:7303498625">📞 7303498625</a>
-        </div>
+      <div class="map-embed">
+        <iframe
+          title="Dr. Sapna Clinic on Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.774384!2d77.2599583!3d28.5767931!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3cb8d50b759%3A0xd6f0803172e0746a!2sDr%20Sapna%20Clinic!5e0!3m2!1sen!2sin!4v1748966400000!5m2!1sen!2sin"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
+      <a class="map-embed-link" href="https://www.google.com/maps/place/Dr+Sapna+Clinic/@28.5774144,77.2632228,731m/data=!3m1!1e3!4m14!1m7!3m6!1s0x390ce3cb8d50b759:0xd6f0803172e0746a!2sDr+Sapna+Clinic!8m2!3d28.5767931!4d77.2625333!16s%2Fg%2F11z8h8v3fq!3m5!1s0x390ce3cb8d50b759:0xd6f0803172e0746a!8m2!3d28.5767931!4d77.2625333!16s%2Fg%2F11z8h8v3fq?entry=ttu" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
     </div>
   </div>
 </section>
@@ -647,14 +700,15 @@ footer{background:#0f0f1a;color:white;padding:60px 5% 28px;}
         <div class="fcol-title">Contact</div>
         <ul class="flinks">
           <li><a href="tel:7303498625">📞 7303498625</a></li>
-          <li><a href="#">📍 187/H/6/1, JEEWAN NAGAR , NEW DELHI -14 </a></li>
-          <li><a href="#">⏰ Mon–Sat 9AM–7PM</a></li>
+          <li><a href="#">📍 H-187/6, Maharani Bagh Ring Road, Jiwan Nagar, J.J. Colony, Phase 1, Sunlight Colony, New Delhi, Delhi 110014</a></li>
+          <li><a href="#contact">⏰ Sun–Sat: 9–11 AM &amp; 6–9 PM</a></li>
+          <li><a href="https://share.google/WwCjajjjhBphLoSDK" target="_blank" rel="noopener noreferrer">⭐ Leave a Google Review</a></li>
           <li><a href="#">🚨 24/7 Emergency</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Dr. Sapna Clinic, Delhi . All Rights Reserved. | 187/H/6/1, JEEWAN NAGAR , NEW DELHI -14  | 📞 7303498625</p>
+      <p>© 2025 Dr. Sapna Clinic, Delhi. All Rights Reserved. | H-187/6, Maharani Bagh Ring Road, Jiwan Nagar, J.J. Colony, Phase 1, Sunlight Colony, New Delhi, Delhi 110014 | 📞 7303498625</p>
       <p style="font-size:0.72rem;">Designed for Women's Health Excellence</p>
     </div>
   </div>
@@ -850,6 +904,35 @@ function showTab(i){
 // ── REVEAL ──
 const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis');});},{threshold:.1});
 document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>ro.observe(el));
+
+// ── STORY READ MORE ──
+(function(){
+  function storyNeedsMore(text){
+    text.classList.remove('collapsed','expanded');
+    const full=text.scrollHeight;
+    text.classList.add('collapsed');
+    return full>text.clientHeight+4;
+  }
+  document.querySelectorAll('.story-card').forEach(card=>{
+    const text=card.querySelector('.story-text');
+    const btn=card.querySelector('.story-read-more');
+    if(!text||!btn) return;
+    const check=()=>{
+      if(!storyNeedsMore(text)){
+        btn.hidden=true;
+        text.classList.remove('collapsed');
+      }
+    };
+    check();
+    window.addEventListener('resize',check);
+    btn.addEventListener('click',()=>{
+      const open=text.classList.toggle('expanded');
+      text.classList.toggle('collapsed',!open);
+      btn.textContent=open?'Read less':'Read more';
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+  });
+})();
 
 // ── SECTION NAV HIGHLIGHT ──
 const secLinks=document.querySelectorAll('.sec-nav a');
